@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    background-color: #0f1117;
+    color: #e2e8f0;
+    /* Inter via system fonts first; falls back to common sans-serif stacks.
+       No external request — preserves the "no data leaves your machine" promise. */
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+  }
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: #1a1d27; }
+  ::-webkit-scrollbar-thumb { background: #2d3148; border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: #6c63ff; }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(26, 29, 39, 0.8);
+    backdrop-filter: blur(12px);
+  }
+  .text-gradient {
+    background: linear-gradient(135deg, #6c63ff, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .glow {
+    box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
+  }
+}
+
+/* Typing animation for AI messages */
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.message-reveal {
+  animation: reveal 0.2s ease-out forwards;
+}
